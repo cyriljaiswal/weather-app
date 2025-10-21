@@ -8,9 +8,10 @@ const form = document.querySelector('form');
 
 form.addEventListener('submit', searchForLocation);
 
-let target = 'Mumbai';
+let target = 'Mumbai'; // Default city
 let interval;
 
+// Mapping Open-Meteo weather codes to friendly text
 const codeMap = {
     0: "Clear Sky", 1: "Mainly Clear", 2: "Partly Cloudy", 3: "Overcast",
     45: "Fog", 48: "Depositing rime fog", 51: "Drizzle: Light", 53: "Drizzle: Moderate", 55: "Drizzle: Dense",
@@ -72,7 +73,9 @@ function updateDetails(temp, locationName, timezone, condition) {
         fetch(`https://api.open-meteo.com/v1/timezone?timezone=${encodeURIComponent(timezone)}`)
         .then(res => res.json())
         .then(data => {
-            const localTime = new Date(data.current_time);
+            const nowUTC = new Date();
+            const offsetMinutes = data.utc_offset_seconds / 60;
+            const localTime = new Date(nowUTC.getTime() + offsetMinutes * 60000);
             dateandtime.innerText = localTime.toLocaleString("en-US");
             const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             weekdayField.innerText = weekdays[localTime.getDay()];
