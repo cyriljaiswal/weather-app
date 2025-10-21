@@ -8,9 +8,11 @@ A sleek, responsive **Weather App** built with **HTML, CSS, and JavaScript**. In
 ## 🌤️ Screenshots
 
 **💻 Desktop View**
+
 ![Desktop Screenshot](images/screenshot-desktop.png)
 
 **📱 Mobile View**
+
 ![Mobile Screenshot](images/screenshot-mobile.png)
 
 ---
