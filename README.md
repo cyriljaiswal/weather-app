@@ -1,72 +1,81 @@
-# ☀️ Weather App
+# ☀️ Weather App  
 
-A modern, responsive weather app built with HTML, CSS, and JavaScript. Quickly view live weather for any city using WeatherAPI: temperature, date/time, weekday, and condition—all in a beautiful, mobile-ready interface.
-
-![Weather App Logo](images/favicon.jpg)
+A sleek, responsive **Weather App** built with **HTML, CSS, and JavaScript**. Instantly view live weather data for any city using **WeatherAPI** — including temperature, weather conditions, local time, and weekday — all in a clean, mobile-friendly design.
 
 ---
-## Screenshots
 
-**Desktop view:**  
+## 🌤️ Screenshots  
+
+**💻 Desktop View**  
 ![Desktop Screenshot](images/screenshot-desktop.png)
 
-**Mobile view:**  
+**📱 Mobile View**  
 ![Mobile Screenshot](images/screenshot-mobile.png)
 
 ---
 
-## Features
+## ✨ Features  
 
-- **Live weather info:** Instantly see temperature, city, weather condition, date, and day for any location.
-- **Search any city:** Fast, accurate location search powered by WeatherAPI.
-- **Responsive design:** Works seamlessly on desktop, tablet, and mobile devices.
-- **Stylish UI:** Clean layout, clear fonts, bold colors, and custom favicon.
-- **Portfolio-ready:** Easy to customize and deploy, ideal for showcasing modern web skills.
-
----
-
-## Getting Started
-
-1. **Clone the repository:**
-    ```
-    git clone https://github.com/Cyriljaiswal/weather-app.git
-    cd weather-app
-    ```
-2. **Add your WeatherAPI key** inside `script.js` (replace the `key` parameter).
-3. **Open `index.html`** in your browser.
+- 🌎 **Live Weather Data** — Real-time temperature, condition, city, and date using WeatherAPI.  
+- 🔍 **Search Any City** — Fast and accurate search for any global location.  
+- 📱 **Fully Responsive** — Works perfectly on desktop, tablet, and mobile.  
+- 🎨 **Modern UI** — Clean layout, smooth visuals, and bold color accents.  
+- 🚀 **Portfolio-Ready** — Perfect for showcasing your front-end skills.  
 
 ---
 
-## Folder Structure
+## ⚙️ Getting Started  
 
+1. **Clone the Repository**  
+   ```bash
+   git clone https://github.com/Cyriljaiswal/weather-app.git
+   cd weather-app
+   ```
+2. **Add Your API Key**  
+   Open `script.js` and replace the `key` value with your own [WeatherAPI](https://www.weatherapi.com/) key.  
+   ```javascript
+   const apiKey = "YOUR_API_KEY_HERE";
+   ```
+3. **Run the App**  
+   Just open `index.html` in your browser — no extra setup needed!
+
+---
+
+## 📁 Folder Structure  
+
+```
 weather-app/
 ├── index.html
 ├── style.css
 ├── script.js
 ├── images/
-│ ├── favicon.ico
-│ └── favicon.jpg
+│   ├── favicon.ico
+│   └── favicon.jpg
 └── README.md
+```
 
 ---
 
-## Deployment
+## 🌐 Deployment  
 
-- Use [GitHub Pages](https://pages.github.com/) for free, live hosting.
-- In your repo: Settings → Pages → Source (select branch and `/root`).
-- Your app will be live at:  
-  `https://Cyriljaiswal.github.io/weather-app/`
+You can easily host your project for free with **GitHub Pages**:
 
----
-
-## Credits
-
-- **WeatherAPI** for live weather data.
-- Favicon: Your own `images/favicon.ico` & `images/favicon.jpg`
-- Built by [Cyril Jaiswal](https://github.com/Cyriljaiswal)
+1. Go to **Settings → Pages**  
+2. Under **Source**, select your branch (e.g., `main`) and `/root`  
+3. Your app will go live at:  
+   **https://Cyriljaiswal.github.io/weather-app/**  
 
 ---
 
-**Contact:**  
-[LinkedIn](https://www.linkedin.com/in/cyriljaiswal) • [GitHub](https://github.com/Cyriljaiswal)
+## 🙌 Credits  
 
+- **Weather Data:** [WeatherAPI](https://www.weatherapi.com/)  
+- **Favicon & Images:** Custom icons in `images/` folder  
+- **Developer:** [Cyril Jaiswal](https://github.com/Cyriljaiswal)  
+
+---
+
+## 💬 Contact  
+
+- [LinkedIn](https://www.linkedin.com/in/cyriljaiswal)  
+- [GitHub](https://github.com/Cyriljaiswal)  
