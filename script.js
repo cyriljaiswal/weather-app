@@ -10,7 +10,6 @@ form.addEventListener('submit', searchForLocation);
 
 let target = 'Mumbai'; // Default city
 let interval;
-let lastTimezone = null;
 
 // Mapping Open-Meteo weather codes to friendly text
 const codeMap = {
@@ -26,7 +25,6 @@ const codeMap = {
 };
 
 async function fetchResults(targetLocation) {
-    // 1. Get coordinates and timezone for the city
     let geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(targetLocation)}&count=1`;
     let geoRes = await fetch(geoUrl);
     let geoData = await geoRes.json();
@@ -41,9 +39,7 @@ async function fetchResults(targetLocation) {
     const lon = location.longitude;
     const name = location.name;
     const timezone = location.timezone;
-    lastTimezone = timezone; // Save for interval use
 
-    // 2. Get weather for coordinates
     let weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
     let weatherRes = await fetch(weatherUrl);
     let weatherData = await weatherRes.json();
@@ -74,12 +70,16 @@ function updateDetails(temp, locationName, timezone, condition) {
     if (interval) clearInterval(interval);
 
     function showTime() {
-        const now = new Date();
-        const localTime = now.toLocaleString("en-US", {timeZone: timezone});
-        dateandtime.innerText = localTime;
-        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-            [new Date(localTime).getDay()];
-        weekdayField.innerText = weekday;
+        fetch(`https://api.open-meteo.com/v1/timezone?timezone=${encodeURIComponent(timezone)}`)
+        .then(res => res.json())
+        .then(data => {
+            const nowUTC = new Date();
+            const offsetMinutes = data.utc_offset_seconds / 60;
+            const localTime = new Date(nowUTC.getTime() + offsetMinutes * 60000);
+            dateandtime.innerText = localTime.toLocaleString("en-US");
+            const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            weekdayField.innerText = weekdays[localTime.getDay()];
+        });
     }
     showTime();
     interval = setInterval(showTime, 1000);
