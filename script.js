@@ -62,7 +62,6 @@ function resetDisplay() {
     clearInterval(interval);
 }
 
-let interval;
 function updateDetails(temp, locationName, timezone, condition) {
     temperatureField.innerText = temp + "°C";
     locationField.innerText = locationName;
@@ -70,19 +69,22 @@ function updateDetails(temp, locationName, timezone, condition) {
     if (interval) clearInterval(interval);
 
     function showTime() {
-        fetch(`https://api.open-meteo.com/v1/timezone?timezone=${encodeURIComponent(timezone)}`)
-        .then(res => res.json())
-        .then(data => {
-            // Use current_time_unix (seconds since epoch)
-            const localTime = new Date(data.current_time_unix * 1000);
-            dateandtime.innerText = localTime.toLocaleString("en-US");
-            const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            weekdayField.innerText = weekdays[localTime.getDay()];
-        });
+        try {
+            // Get real local time using browser's timezone database
+            const now = new Date();
+            const options = {timeZone: timezone, hour12: false, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit"};
+            dateandtime.innerText = now.toLocaleString("en-US", options);
+            const weekday = now.toLocaleString("en-US", {weekday: "long", timeZone: timezone});
+            weekdayField.innerText = weekday;
+        } catch (e) {
+            dateandtime.innerText = "Timezone error";
+            weekdayField.innerText = "Invalid";
+        }
     }
     showTime();
     interval = setInterval(showTime, 1000);
 }
+
 
 
 function searchForLocation(e) {
@@ -92,4 +94,5 @@ function searchForLocation(e) {
 }
 
 fetchResults(target);
+
 
